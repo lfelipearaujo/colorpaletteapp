@@ -1,3 +1,5 @@
+//TODO create button to clean local storage
+
 //! Global selections and variables
 const colorDivs = document.querySelectorAll(".color");
 const generateBtn = document.querySelector(".generate");
@@ -314,15 +316,12 @@ function savePalette(e) {
 
   // generate object
   let paletteNr;
-  const paletteObjects = JSON.parse(localStorage.getItem('palettes'));
+  const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
   if (paletteObjects) {
     paletteNr = paletteObjects.length;
   } else {
     paletteNr = savedPalettes.length;
   }
-
-
-
 
   const paletteObj = { name, colors, nr: paletteNr };
   savedPalettes.push(paletteObj);
@@ -392,15 +391,14 @@ function closeLibrary() {
   popup.classList.remove("active");
 }
 
-
 function getLocal() {
-  if (localStorage.getItem('palettes') === null) {
+  if (localStorage.getItem("palettes") === null) {
     localPalettes = [];
   } else {
-    const paletteObjects = JSON.parse(localStorage.getItem('palettes'));
+    const paletteObjects = JSON.parse(localStorage.getItem("palettes"));
     savedPalettes = [...paletteObjects];
 
-    paletteObjects.forEach(paletteObj => {
+    paletteObjects.forEach((paletteObj) => {
       // generate obj to the library
       const palette = document.createElement("div");
       palette.classList.add("custom-palette");
@@ -442,7 +440,6 @@ function getLocal() {
     });
   }
 }
-
 
 getLocal();
 randomColors();
